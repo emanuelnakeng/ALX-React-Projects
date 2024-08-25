@@ -10,8 +10,6 @@ const RecipeDetails = () => {
 		recipe: state.recipes.find(item => item.id == params.id),
 	}));
 
-	if (!recipe) return <p>Recipe not found</p>;
-
 	return (
 		<div>
 			<h1>{recipe.title}</h1>
