@@ -6,8 +6,8 @@ function EditRecipeForm(props) {
 	const [description, setDescription] = useState(props.recipe.description);
 	const updateRecipe = useRecipeStore(state => state.updateRecipe);
 
-	const handlerSubmit = e => {
-		e.preventDefault();
+	const handlerSubmit = event => {
+		event.preventDefault();
 		const recipeData = { ...props.recipe, title, description };
 		updateRecipe(recipeData);
 	};
