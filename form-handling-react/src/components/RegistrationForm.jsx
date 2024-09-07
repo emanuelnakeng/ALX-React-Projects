@@ -1,59 +1,46 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const RegistrationForm = () => {
-	const [user, setUser] = useState({
-		username: '',
-		email: '',
-		password: '',
-	});
-	const [error, setError] = useState(false);
+	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [errors, setErrors] = useState(null);
 
-	const handleChange = e => {
-		const value = e.target.value;
-		const name = e.target.name;
-		setUser({
-			...user,
-			[name]: value,
-		});
-	};
-
-	const submitHandler = e => {
-		e.preventDefault();
-		if (!user.username || !user.email || !user.password) {
-			setError(true);
+	const handleSubmit = event => {
+		event.preventDefault();
+		if (!username || !email || !password) {
+			setErrors(true);
 		}
 	};
 
 	return (
-		<form onSubmit={submitHandler}>
+		<form onSubmit={handleSubmit}>
 			<div>
 				<label>Username: </label>
 				<input
 					type='text'
-					value={user.username}
-					onChange={handleChange}
-					name='username'
+					value={username}
+					onChange={element => setUsername(element.target.value)}
 				/>
 			</div>
 			<div>
 				<label>Email:</label>
 				<input
 					type='email'
-					name='email'
-					value={user.email}
-					onChange={handleChange}
+					value={email}
+					onChange={element => setEmail(element.target.value)}
 				/>
 			</div>
 			<div>
 				<label>Password:</label>
 				<input
 					type='password'
-					name='password'
-					value={user.password}
-					onChange={handleChange}
+					value={password}
+					onChange={element => setPassword(element.target.value)}
 				/>
 			</div>
-			{error && <p>Form invalid</p>}
+
+			{errors && <p>Form invalid</p>}
 			<div>
 				<button type='submit'>Register Here</button>
 			</div>

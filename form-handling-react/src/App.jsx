@@ -5,7 +5,7 @@ import FormikForm from './components/formikForm';
 function App() {
 	return (
 		<div>
-			<FormikForm />
+			<RegistrationForm />
 		</div>
 	);
 }
