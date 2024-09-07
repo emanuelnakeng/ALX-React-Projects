@@ -4,12 +4,27 @@ const RegistrationForm = () => {
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [errors, setErrors] = useState(null);
+	const [errors, setErrors] = useState({});
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		if (!username || !email || !password) {
-			setErrors(true);
+
+		let validationErrors = {};
+
+		if (!username) {
+			validationErrors.username = 'Username is required';
+		}
+		if (!email) {
+			validationErrors.email = 'Email is required';
+		}
+		if (!password) {
+			validationErrors.password = 'Password is required';
+		}
+
+		setErrors(validationErrors);
+
+		if (Object.keys(validationErrors).length == 0) {
+			console.log({ username, email, password });
 		}
 	};
 
@@ -39,8 +54,6 @@ const RegistrationForm = () => {
 					onChange={element => setPassword(element.target.value)}
 				/>
 			</div>
-
-			{errors && <p>Form invalid</p>}
 			<div>
 				<button type='submit'>Register Here</button>
 			</div>
