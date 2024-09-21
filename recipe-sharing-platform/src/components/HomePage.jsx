@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import recipeData from '../data.json';
 
-function Home() {
+function HomePage() {
 	const [recipes, setRecipes] = useState([]);
 
 	useEffect(() => {
@@ -45,4 +45,4 @@ function Home() {
 		</div>
 	);
 }
-export default Home;
+export default HomePage;
